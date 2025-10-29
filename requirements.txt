@@ -1,0 +1,11 @@
+flask
+torch==2.3.0
+torchaudio
+torchvision
+biopython
+numpy
+pandas
+transformers
+sentencepiece
+openpyxl
+gunicorn

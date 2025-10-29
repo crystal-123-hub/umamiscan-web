@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: umamiscan-web
+    runtime: python
+    env: production
+    region: singapore  # 可改为 oregon / frankfurt 等
+    plan: free         # 免费计划
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
+    disk:
+      name: model-disk
+      mountPath: /var/models
+    volumes:
+      - name: model-disk
+        path: /var/models
+    envVars:
+      - key: PYTHONPATH
+        value: /var/app
